@@ -3,33 +3,4 @@
     ViewBag.Title = "Регистрации";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="mt-4">Первый запрос</h2>
-<table class="table table-striped mt-3">
-    <tr>
-        <th>
-           Имя
-        </th>
-        <th>
-           Название предмета
-        </th>
-        <th>
-           Количество выполненных работ
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fulll_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject_Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfTasks)
-            </td>
-        </tr>
-    }
-
-</table>
+<a class="btn btn-primary" href="Request1/Result/1000021">Редактировать</a>

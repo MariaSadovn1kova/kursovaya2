@@ -13,9 +13,13 @@ namespace kursovaya2.Controllers
         private UniversityEntities db = new UniversityEntities();
         public ActionResult Index()
         {
-            // Создаём параметр
-            SqlParameter parameter = new SqlParameter("@GroupNumber", 1000021);
-            // capital содержит результат выполнения хранимой процедуры
+            
+            return View();
+        }
+
+        public ActionResult Result (int? GroupNumber)
+        {
+            SqlParameter parameter = new SqlParameter("@GroupNumber", GroupNumber);
             var registrations = db.Database.SqlQuery<Request1_Result>("Request1 @GroupNumber", parameter);
             return View(registrations);
         }
