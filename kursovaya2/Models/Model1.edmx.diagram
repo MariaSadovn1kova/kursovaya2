@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08b681b3d1004e1599ac1454c39ab768" Name="Diagram1">
+        <EntityTypeShape EntityType="UniversityModel.Curriculum" Width="1.5" PointX="5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityModel.Registration" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityModel.Student" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityModel.StudentGroup" Width="1.5" PointX="2.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityModel.Subject" Width="1.5" PointX="2.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniversityModel.TaskOnTheSubject" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="UniversityModel.FK__Curriculu__Group__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityModel.FK__Curriculu__Subje__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityModel.FK__Registrat__Stude__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="UniversityModel.FK__Registrat__TaskO__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

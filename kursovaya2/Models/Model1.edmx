@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UniversityModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Curriculum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject_Title" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Group_NumberOfGroup" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Student_StudentNumber" Type="int" Nullable="false" />
+          <Property Name="TaskOnTheSubject_NumberOfSubject" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" />
+          <Property Name="DateOfIssue" Type="date" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentNumber" />
+          </Key>
+          <Property Name="StudentNumber" Type="int" Nullable="false" />
+          <Property Name="Group_NumberOfGroup" Type="int" Nullable="false" />
+          <Property Name="Fulll_Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="StudentGroup">
+          <Key>
+            <PropertyRef Name="NumberOfGroup" />
+          </Key>
+          <Property Name="NumberOfGroup" Type="int" Nullable="false" />
+          <Property Name="Speciality" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="YearOf" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FullNameOfLecturer" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TitleOfDepartmen" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskOnTheSubject">
+          <Key>
+            <PropertyRef Name="NumberOfSubject" />
+          </Key>
+          <Property Name="NumberOfSubject" Type="int" Nullable="false" />
+          <Property Name="Subject_Title" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Synopsis" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK__Curriculu__Group__403A8C7D">
+          <End Role="StudentGroup" Type="Self.StudentGroup" Multiplicity="1" />
+          <End Role="Curriculum" Type="Self.Curriculum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentGroup">
+              <PropertyRef Name="NumberOfGroup" />
+            </Principal>
+            <Dependent Role="Curriculum">
+              <PropertyRef Name="Group_NumberOfGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Curriculu__Subje__3F466844">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Curriculum" Type="Self.Curriculum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Curriculum">
+              <PropertyRef Name="Subject_Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Stude__46E78A0C">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentNumber" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="Student_StudentNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__TaskO__47DBAE45">
+          <End Role="TaskOnTheSubject" Type="Self.TaskOnTheSubject" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskOnTheSubject">
+              <PropertyRef Name="NumberOfSubject" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="TaskOnTheSubject_NumberOfSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Request1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Request2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubjectTitle" Type="varchar" Mode="In" />
+          <Parameter Name="CountOfTasks" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище UniversityModelContainer">
+          <EntitySet Name="Curriculum" EntityType="Self.Curriculum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentGroup" EntityType="Self.StudentGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskOnTheSubject" EntityType="Self.TaskOnTheSubject" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Curriculu__Group__403A8C7D" Association="Self.FK__Curriculu__Group__403A8C7D">
+            <End Role="StudentGroup" EntitySet="StudentGroup" />
+            <End Role="Curriculum" EntitySet="Curriculum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Curriculu__Subje__3F466844" Association="Self.FK__Curriculu__Subje__3F466844">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Curriculum" EntitySet="Curriculum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Stude__46E78A0C" Association="Self.FK__Registrat__Stude__46E78A0C">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__TaskO__47DBAE45" Association="Self.FK__Registrat__TaskO__47DBAE45">
+            <End Role="TaskOnTheSubject" EntitySet="TaskOnTheSubject" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UniversityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Curriculum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Group_NumberOfGroup" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StudentGroup" Relationship="Self.FK__Curriculu__Group__403A8C7D" FromRole="Curriculum" ToRole="StudentGroup" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Curriculu__Subje__3F466844" FromRole="Curriculum" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Student_StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="TaskOnTheSubject_NumberOfSubject" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+          <Property Name="DateOfIssue" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Registrat__Stude__46E78A0C" FromRole="Registration" ToRole="Student" />
+          <NavigationProperty Name="TaskOnTheSubject" Relationship="Self.FK__Registrat__TaskO__47DBAE45" FromRole="Registration" ToRole="TaskOnTheSubject" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentNumber" />
+          </Key>
+          <Property Name="StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="Group_NumberOfGroup" Type="Int32" Nullable="false" />
+          <Property Name="Fulll_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK__Registrat__Stude__46E78A0C" FromRole="Student" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="StudentGroup">
+          <Key>
+            <PropertyRef Name="NumberOfGroup" />
+          </Key>
+          <Property Name="NumberOfGroup" Type="Int32" Nullable="false" />
+          <Property Name="Speciality" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YearOf" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Curriculum" Relationship="Self.FK__Curriculu__Group__403A8C7D" FromRole="StudentGroup" ToRole="Curriculum" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullNameOfLecturer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TitleOfDepartmen" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Curriculum" Relationship="Self.FK__Curriculu__Subje__3F466844" FromRole="Subject" ToRole="Curriculum" />
+        </EntityType>
+        <EntityType Name="TaskOnTheSubject">
+          <Key>
+            <PropertyRef Name="NumberOfSubject" />
+          </Key>
+          <Property Name="NumberOfSubject" Type="Int32" Nullable="false" />
+          <Property Name="Subject_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Synopsis" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Registration" Relationship="Self.FK__Registrat__TaskO__47DBAE45" FromRole="TaskOnTheSubject" ToRole="Registration" />
+        </EntityType>
+        <Association Name="FK__Curriculu__Group__403A8C7D">
+          <End Role="StudentGroup" Type="Self.StudentGroup" Multiplicity="1" />
+          <End Role="Curriculum" Type="Self.Curriculum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentGroup">
+              <PropertyRef Name="NumberOfGroup" />
+            </Principal>
+            <Dependent Role="Curriculum">
+              <PropertyRef Name="Group_NumberOfGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Curriculu__Subje__3F466844">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Curriculum" Type="Self.Curriculum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Title" />
+            </Principal>
+            <Dependent Role="Curriculum">
+              <PropertyRef Name="Subject_Title" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__Stude__46E78A0C">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentNumber" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="Student_StudentNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Registrat__TaskO__47DBAE45">
+          <End Role="TaskOnTheSubject" Type="Self.TaskOnTheSubject" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskOnTheSubject">
+              <PropertyRef Name="NumberOfSubject" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="TaskOnTheSubject_NumberOfSubject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UniversityEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Curriculum" EntityType="Self.Curriculum" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="StudentGroup" EntityType="Self.StudentGroup" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="TaskOnTheSubject" EntityType="Self.TaskOnTheSubject" />
+          <AssociationSet Name="FK__Curriculu__Group__403A8C7D" Association="Self.FK__Curriculu__Group__403A8C7D">
+            <End Role="StudentGroup" EntitySet="StudentGroup" />
+            <End Role="Curriculum" EntitySet="Curriculum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Curriculu__Subje__3F466844" Association="Self.FK__Curriculu__Subje__3F466844">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Curriculum" EntitySet="Curriculum" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__Stude__46E78A0C" Association="Self.FK__Registrat__Stude__46E78A0C">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Registrat__TaskO__47DBAE45" Association="Self.FK__Registrat__TaskO__47DBAE45">
+            <End Role="TaskOnTheSubject" EntitySet="TaskOnTheSubject" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <FunctionImport Name="Request1" ReturnType="Collection(UniversityModel.Request1_Result)">
+            <Parameter Name="GroupNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Request2" ReturnType="Collection(UniversityModel.Request2_Result)">
+            <Parameter Name="SubjectTitle" Mode="In" Type="String" />
+            <Parameter Name="CountOfTasks" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Request1_Result">
+          <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
+          <Property Type="String" Name="Subject_Title" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="NumberOfTasks" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Request2_Result">
+          <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="Group_NumberOfGroup" Nullable="false" />
+          <Property Type="Int32" Name="NumberOfTasks" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UniversityModelContainer" CdmEntityContainer="UniversityEntities">
+          <EntitySetMapping Name="Curriculum">
+            <EntityTypeMapping TypeName="UniversityModel.Curriculum">
+              <MappingFragment StoreEntitySet="Curriculum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration">
+            <EntityTypeMapping TypeName="UniversityModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Student_StudentNumber" ColumnName="Student_StudentNumber" />
+                <ScalarProperty Name="TaskOnTheSubject_NumberOfSubject" ColumnName="TaskOnTheSubject_NumberOfSubject" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="UniversityModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+                <ScalarProperty Name="Fulll_Name" ColumnName="Fulll_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentGroup">
+            <EntityTypeMapping TypeName="UniversityModel.StudentGroup">
+              <MappingFragment StoreEntitySet="StudentGroup">
+                <ScalarProperty Name="NumberOfGroup" ColumnName="NumberOfGroup" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="YearOf" ColumnName="YearOf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="UniversityModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FullNameOfLecturer" ColumnName="FullNameOfLecturer" />
+                <ScalarProperty Name="TitleOfDepartmen" ColumnName="TitleOfDepartmen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskOnTheSubject">
+            <EntityTypeMapping TypeName="UniversityModel.TaskOnTheSubject">
+              <MappingFragment StoreEntitySet="TaskOnTheSubject">
+                <ScalarProperty Name="NumberOfSubject" ColumnName="NumberOfSubject" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="Synopsis" ColumnName="Synopsis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Request1" FunctionName="Хранилище UniversityModel.Request1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.Request1_Result">
+                <ScalarProperty Name="Fulll_Name" ColumnName="Fulll_Name" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="NumberOfTasks" ColumnName="NumberOfTasks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Request2" FunctionName="Хранилище UniversityModel.Request2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.Request2_Result">
+                <ScalarProperty Name="Fulll_Name" ColumnName="Fulll_Name" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+                <ScalarProperty Name="NumberOfTasks" ColumnName="NumberOfTasks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
