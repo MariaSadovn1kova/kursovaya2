@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UniversityModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UniversityModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Curriculum">
           <Key>
             <PropertyRef Name="ID" />
@@ -103,6 +103,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="addCurriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Subject_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Group_NumberOfGroup" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="Request1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GroupNumber" Type="int" Mode="In" />
         </Function>
@@ -134,8 +138,7 @@
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UniversityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -269,11 +272,15 @@
             <End Role="Registration" EntitySet="Registration" />
           </AssociationSet>
           <FunctionImport Name="Request1" ReturnType="Collection(UniversityModel.Request1_Result)">
-            <Parameter Name="GroupNumber" Mode="In" Type="Int32" />
+          <Parameter Name="GroupNumber" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Request2" ReturnType="Collection(UniversityModel.Request2_Result)">
             <Parameter Name="SubjectTitle" Mode="In" Type="String" />
             <Parameter Name="CountOfTasks" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addCurriculum">
+            <Parameter Name="Subject_Title" Mode="In" Type="String" />
+            <Parameter Name="Group_NumberOfGroup" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Request1_Result">
@@ -366,6 +373,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="addCurriculum" FunctionName="Хранилище UniversityModel.addCurriculum" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -131,6 +131,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Request1Controller.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentGroupController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TaskOnTheSubjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +237,21 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Request1\Index.cshtml" />
     <Content Include="Views\Request1\Result.cshtml" />
+    <Content Include="Views\StudentGroup\Create.cshtml" />
+    <Content Include="Views\StudentGroup\Delete.cshtml" />
+    <Content Include="Views\StudentGroup\Details.cshtml" />
+    <Content Include="Views\StudentGroup\Edit.cshtml" />
+    <Content Include="Views\StudentGroup\Index.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
+    <Content Include="Views\Subject\Delete.cshtml" />
+    <Content Include="Views\Subject\Details.cshtml" />
+    <Content Include="Views\Subject\Edit.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\TaskOnTheSubject\Create.cshtml" />
+    <Content Include="Views\TaskOnTheSubject\Delete.cshtml" />
+    <Content Include="Views\TaskOnTheSubject\Details.cshtml" />
+    <Content Include="Views\TaskOnTheSubject\Edit.cshtml" />
+    <Content Include="Views\TaskOnTheSubject\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

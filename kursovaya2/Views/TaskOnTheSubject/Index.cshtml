@@ -1,0 +1,69 @@
+﻿@model IEnumerable<kursovaya2.Models.TaskOnTheSubject>
+@using kursovaya2.Models;
+
+@{
+    ViewBag.Title = "Задания по предмету";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Pages pager = new Pages();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h2 class="mt-4">Список заданий по предметам</h2>
+
+<a class="btn btn-primary mt-3" href="TaskOnTheSubject/Create">Добавить новое задание</a>
+<table class="table table-striped mt-3">
+    <tr>
+        <th>
+            Номер задания
+        </th>
+        <th>
+            Название предмета
+        </th>
+        <th>
+            Краткое описание
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfSubject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject_Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Synopsis)
+            </td>
+            <td style="text-align: right">
+                @{var id = item.NumberOfSubject;}
+                <a class="btn btn-primary" href="TaskOnTheSubject/Edit/@id">Редактировать</a>
+                <a class="btn btn-primary" href="TaskOnTheSubject/Details/@id">Справка</a>
+                <a class="btn btn-danger" href="TaskOnTheSubject/Delete/@id">Удалить</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?pg=@pge">@pge</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

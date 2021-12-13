@@ -1,0 +1,43 @@
+﻿@model kursovaya2.Models.StudentGroup
+
+@{
+    ViewBag.Title = "Справка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-3">Справка</h2>
+<div>
+    <h4>Группа</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Номер группы
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfGroup)
+        </dd>
+
+        <dt>
+            Специальность
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+
+        <dt>
+            Год поступления
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YearOf)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{var id = Model.NumberOfGroup;}
+    <a class="btn btn-primary" href="/StudentGroup/Edit/@id">Редактировать</a> |
+    @Html.ActionLink("Вернуться", "Index")
+</p>

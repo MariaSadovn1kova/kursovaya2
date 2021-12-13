@@ -1,0 +1,70 @@
+﻿@model IEnumerable<kursovaya2.Models.StudentGroup>
+@using kursovaya2.Models;
+
+@{
+    ViewBag.Title = "Группы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Pages pager = new Pages();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h2 class="mt-4">Список групп</h2>
+
+<a class="btn btn-primary mt-3" href="StudentGroup/Create">Добавить новую группу</a>
+<table class="table table-striped mt-3">
+    <tr>
+        <th>
+            Номер группы
+        </th>
+        <th>
+            Специальность
+        </th>
+        <th>
+            Год поступления
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speciality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOf)
+            </td>
+            <td style="text-align: right">
+                @{var id = item.NumberOfGroup;}
+                <a class="btn btn-primary" href="StudentGroup/Edit/@id">Редактировать</a>
+                <a class="btn btn-primary" href="StudentGroup/Details/@id">Справка</a>
+                <a class="btn btn-danger" href="StudentGroup/Delete/@id">Удалить</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?pg=@pge">@pge</a>
+                </li>
+
+            }
+        </ul>
+    }
+</div>

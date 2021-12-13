@@ -55,5 +55,18 @@ namespace kursovaya2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Request2_Result>("Request2", subjectTitleParameter, countOfTasksParameter);
         }
+    
+        public virtual int addCurriculum(string subject_Title, string group_NumberOfGroup)
+        {
+            var subject_TitleParameter = subject_Title != null ?
+                new ObjectParameter("Subject_Title", subject_Title) :
+                new ObjectParameter("Subject_Title", typeof(string));
+    
+            var group_NumberOfGroupParameter = group_NumberOfGroup != null ?
+                new ObjectParameter("Group_NumberOfGroup", group_NumberOfGroup) :
+                new ObjectParameter("Group_NumberOfGroup", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addCurriculum", subject_TitleParameter, group_NumberOfGroupParameter);
+        }
     }
 }
