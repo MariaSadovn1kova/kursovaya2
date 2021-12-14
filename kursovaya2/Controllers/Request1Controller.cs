@@ -12,13 +12,15 @@ namespace kursovaya2.Controllers
     {
         private UniversityEntities db = new UniversityEntities();
         public ActionResult Index()
+
         {
+            ViewBag.NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "NumberOfGroup");
             return View();
         }
 
-        public ActionResult Result ()
+        public ActionResult Result (int GroupNumber)
         {
-            SqlParameter parameter = new SqlParameter("@GroupNumber", 1000021);
+            SqlParameter parameter = new SqlParameter("@GroupNumber", GroupNumber);
             var registrations = db.Database.SqlQuery<Request1_Result>("Request1 @GroupNumber", parameter);
             return View(registrations);
         }
