@@ -18,6 +18,13 @@ namespace kursovaya2.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index (string NumberOfGroup)
+        {
+            return Redirect("Request1/Result?GroupNumber=" + NumberOfGroup);
+        }
+
         public ActionResult Result (int GroupNumber)
         {
             SqlParameter parameter = new SqlParameter("@GroupNumber", GroupNumber);
