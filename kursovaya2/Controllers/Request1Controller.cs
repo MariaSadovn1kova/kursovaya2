@@ -25,11 +25,21 @@ namespace kursovaya2.Controllers
             return Redirect("Request1/Result?GroupNumber=" + NumberOfGroup);
         }
 
-        public ActionResult Result (int GroupNumber)
+        public ActionResult Result (int GroupNumber, int pg = 1)
         {
             SqlParameter parameter = new SqlParameter("@GroupNumber", GroupNumber);
-            var registrations = db.Database.SqlQuery<Request1_Result>("Request1 @GroupNumber", parameter);
-            return View(registrations);
+            List<Request1_Result> requests = db.Database.SqlQuery<Request1_Result>("Request1 @GroupNumber", parameter).ToList();
+            const int pageSize = 50;
+            if (pg < 1)
+                pg = 1;
+
+            int rescCount = requests.Count();
+            var pages = new Pages(rescCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+            var data = requests.Skip(recSkip).Take(pages.PageSize).ToList();
+            this.ViewBag.Pager = pages;
+
+            return View(data);
         }
     }
 }

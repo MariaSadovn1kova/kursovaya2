@@ -15,10 +15,19 @@ namespace kursovaya2.Controllers
         private UniversityEntities db = new UniversityEntities();
 
         // GET: Registration
-        public ActionResult Index()
+        public ActionResult Index(int pg = 1)
         {
-            var registration = db.Registration.Include(r => r.Student).Include(r => r.TaskOnTheSubject);
-            return View(registration.ToList());
+            List<Registration> registrations = db.Registration.ToList();
+            const int pageSize = 50;
+            if (pg < 1)
+                pg = 1;
+
+            int rescCount = registrations.Count();
+            var pages = new Pages(rescCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+            var data = registrations.Skip(recSkip).Take(pages.PageSize).ToList();
+            this.ViewBag.Pager = pages;
+            return View(data);
         }
 
         // GET: Registration/Details/5
@@ -39,8 +48,8 @@ namespace kursovaya2.Controllers
         // GET: Registration/Create
         public ActionResult Create()
         {
-            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "Fulll_Name");
-            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "Subject_Title");
+            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "StudentNumber");
+            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "NumberOfSubject");
             return View();
         }
 

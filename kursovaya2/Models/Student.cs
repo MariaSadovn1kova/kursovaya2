@@ -11,7 +11,8 @@ namespace kursovaya2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Student
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,16 @@ namespace kursovaya2.Models
             this.Registration = new HashSet<Registration>();
         }
     
+        [Required]
+        [Range(1,10)]
         public int StudentNumber { get; set; }
+
+        [Required]
+        [Range(1, 10)]
         public int Group_NumberOfGroup { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public string Fulll_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<kursovaya2.Models.Request1_Result>
+﻿@model IEnumerable<kursovaya2.Models.Request2_Result>
+    
 @using kursovaya2.Models;
 
 @{
@@ -20,7 +21,7 @@
             Имя
         </th>
         <th>
-            Название предмета
+            Номер группы
         </th>
         <th>
             Количество выполненных работ
@@ -34,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Fulll_Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Subject_Title)
+                @Html.DisplayFor(modelItem => item.Group_NumberOfGroup)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfTasks)
