@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CurriculumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\Request1Controller.cs" />
@@ -261,6 +262,11 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Request2\Index.cshtml" />
     <Content Include="Views\Request2\Result.cshtml" />
+    <Content Include="Views\Curriculum\Create.cshtml" />
+    <Content Include="Views\Curriculum\Delete.cshtml" />
+    <Content Include="Views\Curriculum\Details.cshtml" />
+    <Content Include="Views\Curriculum\Edit.cshtml" />
+    <Content Include="Views\Curriculum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

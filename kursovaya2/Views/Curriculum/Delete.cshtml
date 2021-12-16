@@ -1,0 +1,41 @@
+﻿@model kursovaya2.Models.Curriculum
+
+@{
+    ViewBag.Title = "Удаление";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-3">Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить это?</h3>
+<div>
+    <h4>Расписание</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Название предмета
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject.Title)
+        </dd>
+
+        <dt>
+            Номер группы
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentGroup.NumberOfGroup)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-primary" /> |
+            @Html.ActionLink("Вернуться", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model kursovaya2.Models.Curriculum
+
+@{
+    ViewBag.Title = "Справка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-3">Справка</h2>
+
+<div>
+    <h4>Расписание</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+          Название предмета
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subject.Title)
+        </dd>
+
+        <dt>
+          Номер группы
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentGroup.NumberOfGroup)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{var id = Model.ID;}
+    <a class="btn btn-primary" href="/Curriculum/Edit/@id">Редактировать</a> |
+    @Html.ActionLink("Вернуться", "Index")
+</p>

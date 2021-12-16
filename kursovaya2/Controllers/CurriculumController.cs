@@ -10,125 +10,125 @@ using kursovaya2.Models;
 
 namespace kursovaya2.Controllers
 {
-    public class RegistrationController : Controller
+    public class CurriculumController : Controller
     {
         private UniversityEntities db = new UniversityEntities();
 
-        // GET: Registration
+        // GET: Curriculum
         public ActionResult Index(int pg = 1)
         {
-            List<Registration> registrations = db.Registration.ToList();
+            List<Curriculum> curriculums = db.Curriculum.ToList();
             const int pageSize = 50;
             if (pg < 1)
                 pg = 1;
 
-            int rescCount = registrations.Count();
+            int rescCount = curriculums.Count();
             var pages = new Pages(rescCount, pg, pageSize);
             int recSkip = (pg - 1) * pageSize;
-            var data = registrations.Skip(recSkip).Take(pages.PageSize).ToList();
+            var data = curriculums.Skip(recSkip).Take(pages.PageSize).ToList();
             this.ViewBag.Pager = pages;
             return View(data);
         }
 
-        // GET: Registration/Details/5
+        // GET: Curriculum/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Registration registration = db.Registration.Find(id);
-            if (registration == null)
+            Curriculum curriculum = db.Curriculum.Find(id);
+            if (curriculum == null)
             {
                 return HttpNotFound();
             }
-            return View(registration);
+            return View(curriculum);
         }
 
-        // GET: Registration/Create
+        // GET: Curriculum/Create
         public ActionResult Create()
         {
-            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "StudentNumber");
-            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "NumberOfSubject");
+            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "NumberOfGroup");
+            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "Title");
             return View();
         }
 
-        // POST: Registration/Create
+        // POST: Curriculum/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Student_StudentNumber,TaskOnTheSubject_NumberOfSubject,DeliveryDate,DateOfIssue")] Registration registration)
+        public ActionResult Create([Bind(Include = "ID,Subject_Title,Group_NumberOfGroup")] Curriculum curriculum)
         {
             if (ModelState.IsValid)
             {
-                db.Registration.Add(registration);
+                db.Curriculum.Add(curriculum);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "StudentNumber", registration.Student_StudentNumber);
-            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "NumberOfSubject", registration.TaskOnTheSubject_NumberOfSubject);
-            return View(registration);
+            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "NumberOfGroup", curriculum.Group_NumberOfGroup);
+            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "Title", curriculum.Subject_Title);
+            return View(curriculum);
         }
 
-        // GET: Registration/Edit/5
+        // GET: Curriculum/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Registration registration = db.Registration.Find(id);
-            if (registration == null)
+            Curriculum curriculum = db.Curriculum.Find(id);
+            if (curriculum == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "StudentNumber", registration.Student_StudentNumber);
-            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "NumberOfSubject", registration.TaskOnTheSubject_NumberOfSubject);
-            return View(registration);
+            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "NumberOfGroup", curriculum.Group_NumberOfGroup);
+            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "Title", curriculum.Subject_Title);
+            return View(curriculum);
         }
 
-        // POST: Registration/Edit/5
+        // POST: Curriculum/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. 
         // Дополнительные сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Student_StudentNumber,TaskOnTheSubject_NumberOfSubject,DeliveryDate,DateOfIssue")] Registration registration)
+        public ActionResult Edit([Bind(Include = "ID,Subject_Title,Group_NumberOfGroup")] Curriculum curriculum)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(registration).State = EntityState.Modified;
+                db.Entry(curriculum).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "Fulll_Name", registration.Student_StudentNumber);
-            ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "Subject_Title", registration.TaskOnTheSubject_NumberOfSubject);
-            return View(registration);
+            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "Speciality", curriculum.Group_NumberOfGroup);
+            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "FullNameOfLecturer", curriculum.Subject_Title);
+            return View(curriculum);
         }
 
-        // GET: Registration/Delete/5
+        // GET: Curriculum/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Registration registration = db.Registration.Find(id);
-            if (registration == null)
+            Curriculum curriculum = db.Curriculum.Find(id);
+            if (curriculum == null)
             {
                 return HttpNotFound();
             }
-            return View(registration);
+            return View(curriculum);
         }
 
-        // POST: Registration/Delete/5
+        // POST: Curriculum/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Registration registration = db.Registration.Find(id);
-            db.Registration.Remove(registration);
+            Curriculum curriculum = db.Curriculum.Find(id);
+            db.Curriculum.Remove(curriculum);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
