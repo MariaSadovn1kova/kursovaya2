@@ -1,11 +1,11 @@
 ﻿@model kursovaya2.Models.Registration
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Редактирование";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 class="mt-3">Редактирование</h2>
 
 @using (Html.BeginForm())
 {
@@ -18,23 +18,23 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Student_StudentNumber, "Student_StudentNumber", htmlAttributes: new { @class = "control-label col-md-2" })
+            <p>Номер зачетной книжки</p>
             <div class="col-md-10">
-                @Html.DropDownList("Student_StudentNumber", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.Student_StudentNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Student_StudentNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TaskOnTheSubject_NumberOfSubject, "TaskOnTheSubject_NumberOfSubject", htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="mt-3">Номер задания по предмету</p>
             <div class="col-md-10">
-                @Html.DropDownList("TaskOnTheSubject_NumberOfSubject", null, htmlAttributes: new { @class = "form-control" })
+                @Html.EditorFor(model => model.TaskOnTheSubject_NumberOfSubject, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TaskOnTheSubject_NumberOfSubject, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DeliveryDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="mt-3">Дата выдачи</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DeliveryDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DeliveryDate, "", new { @class = "text-danger" })
@@ -42,21 +42,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateOfIssue, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="mt-3">Дата сдачи</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateOfIssue, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateOfIssue, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="mt-2">
+    @Html.ActionLink("Вернуться", "Index")
 </div>

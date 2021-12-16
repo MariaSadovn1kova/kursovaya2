@@ -1,18 +1,18 @@
 ﻿@model kursovaya2.Models.Registration
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Справка";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="mt-3">Справка</h2>
 
 <div>
-    <h4>Registration</h4>
+    <h4>Регистрация задания</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DeliveryDate)
+            Дата выдачи
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DateOfIssue)
+            Дата сдачи
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Student.Fulll_Name)
+           Имя студента
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TaskOnTheSubject.Subject_Title)
+            Название предмета
         </dt>
 
         <dd>
@@ -46,6 +46,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{var id = Model.ID;}
+    <a class="btn btn-primary" href="/Registration/Edit/@id">Редактировать</a> |
+    @Html.ActionLink("Вернуться", "Index")
 </p>

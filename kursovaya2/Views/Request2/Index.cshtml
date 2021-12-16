@@ -9,11 +9,12 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-group mt-3">
-        <div class="col-4">
-            @Html.TextArea("SubjectTitle", "")
+        <div class="col-6">
+            @Html.TextArea("SubjectTitle", "", 1 , 50, null)
         </div>
-        <div class="col-4">
-            @Html.TextArea("CountOfTasks", "")
+        <h2 class="mt-4">Введите количество выполненных заданий</h2>
+        <div class="col-6">
+            @Html.TextArea("CountOfTasks", "", 1, 50, null)
         </div>
     </div>
     <div class="col-md-offset-2 col-4 mt-3">
