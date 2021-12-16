@@ -1,1 +1,59 @@
-﻿
+﻿@model IEnumerable<kursovaya2.Models.Request2_Result>
+
+@using kursovaya2.Models;
+
+@{
+    ViewBag.Title = "Список указанных студентов";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Pages pager = new Pages();
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+<h2 class="mt-4">Второй запрос запрос</h2>
+<table class="table table-striped mt-3">
+    <tr>
+        <th>
+            Имя
+        </th>
+        <th>
+            Номер группы
+        </th>
+        <th>
+            Количество выполненных работ
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fulll_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group_NumberOfGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfTasks)
+            </td>
+        </tr>
+    }
+</table>
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                    <a class="page-link" href="?pg=@pge">@pge</a>
+                </li>
+
+            }
+        </ul>
+    }
+</div>

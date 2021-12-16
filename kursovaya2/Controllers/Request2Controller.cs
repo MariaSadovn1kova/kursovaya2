@@ -13,8 +13,20 @@ namespace kursovaya2.Controllers
         // GET: Request2
         public ActionResult Index(int pg = 1)
         {
-            SqlParameter parameter = new SqlParameter("@SubjectTitle", "Англ Анализ");
-            SqlParameter parameter2 = new SqlParameter("@CountOfTasks", 2);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(string SubjectTitle, string CountOfTasks)
+        {
+            return Redirect("Request2/Result?SubjectTitle=" + SubjectTitle + "&CountOfTasks=" + CountOfTasks);
+        }
+
+        public ActionResult Result(string SubjectTitle, int CountOfTasks, int pg = 1)
+        {
+            SqlParameter parameter = new SqlParameter("@SubjectTitle", SubjectTitle);
+            SqlParameter parameter2 = new SqlParameter("@CountOfTasks", CountOfTasks);
             List<Request2_Result> requests = db.Database.SqlQuery<Request2_Result>("Request2 @SubjectTitle, @CountOfTasks", parameter, parameter2).ToList();
             const int pageSize = 50;
             if (pg < 1)
