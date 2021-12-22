@@ -62,9 +62,15 @@ namespace kursovaya2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Registration.Add(registration);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.addRegistration(registration.ID, registration.Student_StudentNumber, registration.TaskOnTheSubject_NumberOfSubject, registration.DeliveryDate, registration.DateOfIssue);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Ошибка! Запись не может быть добавлена");
+                }
             }
 
             ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "StudentNumber", registration.Student_StudentNumber);
@@ -96,11 +102,14 @@ namespace kursovaya2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Student_StudentNumber,TaskOnTheSubject_NumberOfSubject,DeliveryDate,DateOfIssue")] Registration registration)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(registration).State = EntityState.Modified;
-                db.SaveChanges();
+                db.upRegistration(registration.ID, registration.Student_StudentNumber, registration.TaskOnTheSubject_NumberOfSubject, registration.DeliveryDate, registration.DateOfIssue);
                 return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ошибка! Запись не может быть отредактирована ");
             }
             ViewBag.Student_StudentNumber = new SelectList(db.Student, "StudentNumber", "Fulll_Name", registration.Student_StudentNumber);
             ViewBag.TaskOnTheSubject_NumberOfSubject = new SelectList(db.TaskOnTheSubject, "NumberOfSubject", "Subject_Title", registration.TaskOnTheSubject_NumberOfSubject);

@@ -61,9 +61,15 @@ namespace kursovaya2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TaskOnTheSubject.Add(taskOnTheSubject);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.addTaskOnTheSubject(taskOnTheSubject.NumberOfSubject, taskOnTheSubject.Subject_Title, taskOnTheSubject.Synopsis);
+                    return RedirectToAction("Index");
+                }
+                catch(Exception ex)
+                {
+                    ModelState.AddModelError("", "Ошибка! Задание по предмету не может быть добавлено");
+                }
             }
 
             return View(taskOnTheSubject);
@@ -93,9 +99,15 @@ namespace kursovaya2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(taskOnTheSubject).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.upTaskOnTheSubject(taskOnTheSubject.NumberOfSubject, taskOnTheSubject.Subject_Title, taskOnTheSubject.Synopsis);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Ошибка! Задание по предмету не может быть отредактировано");
+                }
             }
             return View(taskOnTheSubject);
         }
@@ -121,9 +133,17 @@ namespace kursovaya2.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             TaskOnTheSubject taskOnTheSubject = db.TaskOnTheSubject.Find(id);
-            db.TaskOnTheSubject.Remove(taskOnTheSubject);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.TaskOnTheSubject.Remove(taskOnTheSubject);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ошибка! Объект используется в другой таблице");
+            }
+            return View(taskOnTheSubject);
         }
 
         protected override void Dispose(bool disposing)

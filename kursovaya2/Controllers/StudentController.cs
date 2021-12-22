@@ -59,11 +59,19 @@ namespace kursovaya2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StudentNumber,Group_NumberOfGroup,Fulll_Name")] Student student)
         {
+
             if (ModelState.IsValid)
             {
-                db.Student.Add(student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.addStudent(student.StudentNumber, student.Group_NumberOfGroup, student.Fulll_Name);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Ошибка! Студент не может быть добавлен");
+                }
+                return View(student);
             }
 
             return View(student);
@@ -93,9 +101,15 @@ namespace kursovaya2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.upStudent(student.StudentNumber, student.Group_NumberOfGroup, student.Fulll_Name);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Ошибка! Данные о студенте не могут быть отредактированы");
+                }
             }
             return View(student);
         }

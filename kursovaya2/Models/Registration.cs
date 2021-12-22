@@ -11,13 +11,34 @@ namespace kursovaya2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Registration
     {
+
+        [Required]
+        [Display(Name = "ID")]
+        [Range(0, 999999)]
         public int ID { get; set; }
+
+        [Required]
+        [Display(Name = "Номер зачетной книжки")]
+        [Range(0, 999999)]
         public int Student_StudentNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Номер задания по предмету")]
+        [Range(0, 999999)]
         public int TaskOnTheSubject_NumberOfSubject { get; set; }
+
+        [Required]
+        [Display(Name = "Дата выдачи")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DeliveryDate { get; set; }
+
+        [Required]
+        [Display(Name = "Дата сдачи")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateOfIssue { get; set; }
     
         public virtual Student Student { get; set; }

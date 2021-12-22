@@ -11,7 +11,8 @@ namespace kursovaya2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TaskOnTheSubject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,9 +20,15 @@ namespace kursovaya2.Models
         {
             this.Registration = new HashSet<Registration>();
         }
-    
+        [Required]
+        [Display(Name = "Номер задания по предмету")]
+        [Range(0, 999999)]
         public int NumberOfSubject { get; set; }
+        [Required]
+        [Display(Name = "Название предмета")]
         public string Subject_Title { get; set; }
+        [Required]
+        [Display(Name = "Краткое описание")]
         public string Synopsis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

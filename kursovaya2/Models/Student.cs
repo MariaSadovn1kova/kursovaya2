@@ -20,20 +20,23 @@ namespace kursovaya2.Models
         {
             this.Registration = new HashSet<Registration>();
         }
-    
+
         [Required]
-        [Range(1,10)]
+        [Display(Name = "Номер зачетной книжки")]
+        [Range(0, 999999999)]
         public int StudentNumber { get; set; }
 
         [Required]
-        [Range(1, 10)]
+        [Display(Name = "Номер группы")]
+        [Range(0, 999999999)]
         public int Group_NumberOfGroup { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [Display(Name = "Имя")]
         public string Fulll_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Registration> Registration { get; set; }
+        public virtual StudentGroup StudentGroup { get; set; }
     }
 }

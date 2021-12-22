@@ -68,5 +68,312 @@ namespace kursovaya2.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addCurriculum", subject_TitleParameter, group_NumberOfGroupParameter);
         }
+    
+        public virtual int addRegistration(Nullable<int> iD, Nullable<int> student_StudentNumber, Nullable<int> taskOnTheSubject_NumberOfSubject, Nullable<System.DateTime> deliveryDate, Nullable<System.DateTime> dateOfissue)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var student_StudentNumberParameter = student_StudentNumber.HasValue ?
+                new ObjectParameter("Student_StudentNumber", student_StudentNumber) :
+                new ObjectParameter("Student_StudentNumber", typeof(int));
+    
+            var taskOnTheSubject_NumberOfSubjectParameter = taskOnTheSubject_NumberOfSubject.HasValue ?
+                new ObjectParameter("TaskOnTheSubject_NumberOfSubject", taskOnTheSubject_NumberOfSubject) :
+                new ObjectParameter("TaskOnTheSubject_NumberOfSubject", typeof(int));
+    
+            var deliveryDateParameter = deliveryDate.HasValue ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(System.DateTime));
+    
+            var dateOfissueParameter = dateOfissue.HasValue ?
+                new ObjectParameter("DateOfissue", dateOfissue) :
+                new ObjectParameter("DateOfissue", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addRegistration", iDParameter, student_StudentNumberParameter, taskOnTheSubject_NumberOfSubjectParameter, deliveryDateParameter, dateOfissueParameter);
+        }
+    
+        public virtual int addStudent(Nullable<int> studentNumber, Nullable<int> group_Number, string full_Name)
+        {
+            var studentNumberParameter = studentNumber.HasValue ?
+                new ObjectParameter("StudentNumber", studentNumber) :
+                new ObjectParameter("StudentNumber", typeof(int));
+    
+            var group_NumberParameter = group_Number.HasValue ?
+                new ObjectParameter("Group_Number", group_Number) :
+                new ObjectParameter("Group_Number", typeof(int));
+    
+            var full_NameParameter = full_Name != null ?
+                new ObjectParameter("Full_Name", full_Name) :
+                new ObjectParameter("Full_Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addStudent", studentNumberParameter, group_NumberParameter, full_NameParameter);
+        }
+    
+        public virtual int addStudentGroup(Nullable<int> numberOfGroup, string speciality, Nullable<int> yearOf)
+        {
+            var numberOfGroupParameter = numberOfGroup.HasValue ?
+                new ObjectParameter("NumberOfGroup", numberOfGroup) :
+                new ObjectParameter("NumberOfGroup", typeof(int));
+    
+            var specialityParameter = speciality != null ?
+                new ObjectParameter("Speciality", speciality) :
+                new ObjectParameter("Speciality", typeof(string));
+    
+            var yearOfParameter = yearOf.HasValue ?
+                new ObjectParameter("YearOf", yearOf) :
+                new ObjectParameter("YearOf", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addStudentGroup", numberOfGroupParameter, specialityParameter, yearOfParameter);
+        }
+    
+        public virtual int addSubject(string title, string fullNameOfLecturer, string titleOfDepartament)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var fullNameOfLecturerParameter = fullNameOfLecturer != null ?
+                new ObjectParameter("FullNameOfLecturer", fullNameOfLecturer) :
+                new ObjectParameter("FullNameOfLecturer", typeof(string));
+    
+            var titleOfDepartamentParameter = titleOfDepartament != null ?
+                new ObjectParameter("TitleOfDepartament", titleOfDepartament) :
+                new ObjectParameter("TitleOfDepartament", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addSubject", titleParameter, fullNameOfLecturerParameter, titleOfDepartamentParameter);
+        }
+    
+        public virtual int addTaskOnTheSubject(Nullable<int> numberOfSubject, string subject_Title, string synopsis)
+        {
+            var numberOfSubjectParameter = numberOfSubject.HasValue ?
+                new ObjectParameter("NumberOfSubject", numberOfSubject) :
+                new ObjectParameter("NumberOfSubject", typeof(int));
+    
+            var subject_TitleParameter = subject_Title != null ?
+                new ObjectParameter("Subject_Title", subject_Title) :
+                new ObjectParameter("Subject_Title", typeof(string));
+    
+            var synopsisParameter = synopsis != null ?
+                new ObjectParameter("Synopsis", synopsis) :
+                new ObjectParameter("Synopsis", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addTaskOnTheSubject", numberOfSubjectParameter, subject_TitleParameter, synopsisParameter);
+        }
+    
+        public virtual int delCurriculum(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delCurriculum", iDParameter);
+        }
+    
+        public virtual int delRegistration(Nullable<int> iD)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delRegistration", iDParameter);
+        }
+    
+        public virtual int delStudent(Nullable<int> studentNumber)
+        {
+            var studentNumberParameter = studentNumber.HasValue ?
+                new ObjectParameter("StudentNumber", studentNumber) :
+                new ObjectParameter("StudentNumber", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delStudent", studentNumberParameter);
+        }
+    
+        public virtual int delStudentGroup(Nullable<int> numberOfGroup)
+        {
+            var numberOfGroupParameter = numberOfGroup.HasValue ?
+                new ObjectParameter("NumberOfGroup", numberOfGroup) :
+                new ObjectParameter("NumberOfGroup", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delStudentGroup", numberOfGroupParameter);
+        }
+    
+        public virtual int delSubject(string title)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delSubject", titleParameter);
+        }
+    
+        public virtual int delTaskOnTheSubject(Nullable<int> numberOfSubject)
+        {
+            var numberOfSubjectParameter = numberOfSubject.HasValue ?
+                new ObjectParameter("NumberOfSubject", numberOfSubject) :
+                new ObjectParameter("NumberOfSubject", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delTaskOnTheSubject", numberOfSubjectParameter);
+        }
+    
+        public virtual ObjectResult<selCurriculum_Result> selCurriculum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selCurriculum_Result>("selCurriculum");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> selGroupNumber()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("selGroupNumber");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> selNumberOfSubject()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("selNumberOfSubject");
+        }
+    
+        public virtual ObjectResult<selRegistration_Result> selRegistration()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selRegistration_Result>("selRegistration");
+        }
+    
+        public virtual ObjectResult<selStudent_Result> selStudent()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selStudent_Result>("selStudent");
+        }
+    
+        public virtual ObjectResult<selStudentGroup_Result> selStudentGroup()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selStudentGroup_Result>("selStudentGroup");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> selStudentNumber()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("selStudentNumber");
+        }
+    
+        public virtual ObjectResult<selSubject_Result> selSubject()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selSubject_Result>("selSubject");
+        }
+    
+        public virtual ObjectResult<string> selSubjectTitle()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("selSubjectTitle");
+        }
+    
+        public virtual ObjectResult<selTaskOnTheSubject_Result> selTaskOnTheSubject()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<selTaskOnTheSubject_Result>("selTaskOnTheSubject");
+        }
+    
+        public virtual int upCurriculum(Nullable<int> iD, string subject_Title, Nullable<int> group_NumberOfGroup)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var subject_TitleParameter = subject_Title != null ?
+                new ObjectParameter("Subject_Title", subject_Title) :
+                new ObjectParameter("Subject_Title", typeof(string));
+    
+            var group_NumberOfGroupParameter = group_NumberOfGroup.HasValue ?
+                new ObjectParameter("Group_NumberOfGroup", group_NumberOfGroup) :
+                new ObjectParameter("Group_NumberOfGroup", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upCurriculum", iDParameter, subject_TitleParameter, group_NumberOfGroupParameter);
+        }
+    
+        public virtual int upRegistration(Nullable<int> iD, Nullable<int> student_StudentNumber, Nullable<int> taskOnTheSubject_NumberOfSubject, Nullable<System.DateTime> deliveryDate, Nullable<System.DateTime> dateOfissue)
+        {
+            var iDParameter = iD.HasValue ?
+                new ObjectParameter("ID", iD) :
+                new ObjectParameter("ID", typeof(int));
+    
+            var student_StudentNumberParameter = student_StudentNumber.HasValue ?
+                new ObjectParameter("Student_StudentNumber", student_StudentNumber) :
+                new ObjectParameter("Student_StudentNumber", typeof(int));
+    
+            var taskOnTheSubject_NumberOfSubjectParameter = taskOnTheSubject_NumberOfSubject.HasValue ?
+                new ObjectParameter("TaskOnTheSubject_NumberOfSubject", taskOnTheSubject_NumberOfSubject) :
+                new ObjectParameter("TaskOnTheSubject_NumberOfSubject", typeof(int));
+    
+            var deliveryDateParameter = deliveryDate.HasValue ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(System.DateTime));
+    
+            var dateOfissueParameter = dateOfissue.HasValue ?
+                new ObjectParameter("DateOfissue", dateOfissue) :
+                new ObjectParameter("DateOfissue", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upRegistration", iDParameter, student_StudentNumberParameter, taskOnTheSubject_NumberOfSubjectParameter, deliveryDateParameter, dateOfissueParameter);
+        }
+    
+        public virtual int upStudent(Nullable<int> studentNumber, Nullable<int> group_Number, string full_Name)
+        {
+            var studentNumberParameter = studentNumber.HasValue ?
+                new ObjectParameter("StudentNumber", studentNumber) :
+                new ObjectParameter("StudentNumber", typeof(int));
+    
+            var group_NumberParameter = group_Number.HasValue ?
+                new ObjectParameter("Group_Number", group_Number) :
+                new ObjectParameter("Group_Number", typeof(int));
+    
+            var full_NameParameter = full_Name != null ?
+                new ObjectParameter("Full_Name", full_Name) :
+                new ObjectParameter("Full_Name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upStudent", studentNumberParameter, group_NumberParameter, full_NameParameter);
+        }
+    
+        public virtual int upStudentGroup(Nullable<int> numberOfGroup, string speciality, Nullable<int> yearOf)
+        {
+            var numberOfGroupParameter = numberOfGroup.HasValue ?
+                new ObjectParameter("NumberOfGroup", numberOfGroup) :
+                new ObjectParameter("NumberOfGroup", typeof(int));
+    
+            var specialityParameter = speciality != null ?
+                new ObjectParameter("Speciality", speciality) :
+                new ObjectParameter("Speciality", typeof(string));
+    
+            var yearOfParameter = yearOf.HasValue ?
+                new ObjectParameter("YearOf", yearOf) :
+                new ObjectParameter("YearOf", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upStudentGroup", numberOfGroupParameter, specialityParameter, yearOfParameter);
+        }
+    
+        public virtual int upSubject(string title, string fullNameOfLecturer, string titleOfDepartament)
+        {
+            var titleParameter = title != null ?
+                new ObjectParameter("Title", title) :
+                new ObjectParameter("Title", typeof(string));
+    
+            var fullNameOfLecturerParameter = fullNameOfLecturer != null ?
+                new ObjectParameter("FullNameOfLecturer", fullNameOfLecturer) :
+                new ObjectParameter("FullNameOfLecturer", typeof(string));
+    
+            var titleOfDepartamentParameter = titleOfDepartament != null ?
+                new ObjectParameter("TitleOfDepartament", titleOfDepartament) :
+                new ObjectParameter("TitleOfDepartament", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upSubject", titleParameter, fullNameOfLecturerParameter, titleOfDepartamentParameter);
+        }
+    
+        public virtual int upTaskOnTheSubject(Nullable<int> numberOfSubject, string subject_Title, string synopsis)
+        {
+            var numberOfSubjectParameter = numberOfSubject.HasValue ?
+                new ObjectParameter("NumberOfSubject", numberOfSubject) :
+                new ObjectParameter("NumberOfSubject", typeof(int));
+    
+            var subject_TitleParameter = subject_Title != null ?
+                new ObjectParameter("Subject_Title", subject_Title) :
+                new ObjectParameter("Subject_Title", typeof(string));
+    
+            var synopsisParameter = synopsis != null ?
+                new ObjectParameter("Synopsis", synopsis) :
+                new ObjectParameter("Synopsis", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("upTaskOnTheSubject", numberOfSubjectParameter, subject_TitleParameter, synopsisParameter);
+        }
     }
 }

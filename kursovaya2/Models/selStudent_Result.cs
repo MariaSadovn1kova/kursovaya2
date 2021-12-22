@@ -10,27 +10,11 @@
 namespace kursovaya2.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Curriculum
-    {
-
-        [Required]
-        [Display(Name = "ID")]
-        [Range(0, 999999999)]
-        public int ID { get; set; }
-
-        [Required]
-        [Display(Name = "Название предмета")]
-        public string Subject_Title { get; set; }
-
-        [Required]
-        [Display(Name = "Номер группы")]
-        [Range(0, 999999999)]
-        public int Group_NumberOfGroup { get; set; }
     
-        public virtual StudentGroup StudentGroup { get; set; }
-        public virtual Subject Subject { get; set; }
+    public partial class selStudent_Result
+    {
+        public int StudentNumber { get; set; }
+        public int Group_NumberOfGroup { get; set; }
+        public string Fulll_Name { get; set; }
     }
 }

@@ -102,8 +102,8 @@ namespace kursovaya2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "Speciality", curriculum.Group_NumberOfGroup);
-            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "FullNameOfLecturer", curriculum.Subject_Title);
+            ViewBag.Group_NumberOfGroup = new SelectList(db.StudentGroup, "NumberOfGroup", "NumberOfGroup", curriculum.Group_NumberOfGroup);
+            ViewBag.Subject_Title = new SelectList(db.Subject, "Title", "Title", curriculum.Subject_Title);
             return View(curriculum);
         }
 

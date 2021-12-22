@@ -107,12 +107,99 @@
           <Parameter Name="Subject_Title" Type="varchar" Mode="In" />
           <Parameter Name="Group_NumberOfGroup" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="addRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Student_StudentNumber" Type="int" Mode="In" />
+          <Parameter Name="TaskOnTheSubject_NumberOfSubject" Type="int" Mode="In" />
+          <Parameter Name="DeliveryDate" Type="date" Mode="In" />
+          <Parameter Name="DateOfissue" Type="date" Mode="In" />
+        </Function>
+        <Function Name="addStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentNumber" Type="int" Mode="In" />
+          <Parameter Name="Group_Number" Type="int" Mode="In" />
+          <Parameter Name="Full_Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="addStudentGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfGroup" Type="int" Mode="In" />
+          <Parameter Name="Speciality" Type="varchar" Mode="In" />
+          <Parameter Name="YearOf" Type="int" Mode="In" />
+        </Function>
+        <Function Name="addSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="FullNameOfLecturer" Type="varchar" Mode="In" />
+          <Parameter Name="TitleOfDepartament" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="addTaskOnTheSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfSubject" Type="int" Mode="In" />
+          <Parameter Name="Subject_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Synopsis" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="delCurriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delStudentGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfGroup" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="delTaskOnTheSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfSubject" Type="int" Mode="In" />
+        </Function>
         <Function Name="Request1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="GroupNumber" Type="int" Mode="In" />
         </Function>
         <Function Name="Request2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SubjectTitle" Type="varchar" Mode="In" />
           <Parameter Name="CountOfTasks" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selCurriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selGroupNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selNumberOfSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selStudentGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selStudentNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selSubjectTitle" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="selTaskOnTheSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="upCurriculum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Subject_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Group_NumberOfGroup" Type="int" Mode="In" />
+        </Function>
+        <Function Name="upRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Student_StudentNumber" Type="int" Mode="In" />
+          <Parameter Name="TaskOnTheSubject_NumberOfSubject" Type="int" Mode="In" />
+          <Parameter Name="DeliveryDate" Type="date" Mode="In" />
+          <Parameter Name="DateOfissue" Type="date" Mode="In" />
+        </Function>
+        <Function Name="upStudent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentNumber" Type="int" Mode="In" />
+          <Parameter Name="Group_Number" Type="int" Mode="In" />
+          <Parameter Name="Full_Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="upStudentGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfGroup" Type="int" Mode="In" />
+          <Parameter Name="Speciality" Type="varchar" Mode="In" />
+          <Parameter Name="YearOf" Type="int" Mode="In" />
+        </Function>
+        <Function Name="upSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Title" Type="varchar" Mode="In" />
+          <Parameter Name="FullNameOfLecturer" Type="varchar" Mode="In" />
+          <Parameter Name="TitleOfDepartament" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="upTaskOnTheSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NumberOfSubject" Type="int" Mode="In" />
+          <Parameter Name="Subject_Title" Type="varchar" Mode="In" />
+          <Parameter Name="Synopsis" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="Хранилище UniversityModelContainer">
           <EntitySet Name="Curriculum" EntityType="Self.Curriculum" Schema="dbo" store:Type="Tables" />
@@ -282,6 +369,93 @@
             <Parameter Name="Subject_Title" Mode="In" Type="String" />
             <Parameter Name="Group_NumberOfGroup" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="addRegistration">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Student_StudentNumber" Mode="In" Type="Int32" />
+            <Parameter Name="TaskOnTheSubject_NumberOfSubject" Mode="In" Type="Int32" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DateOfissue" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="addStudent">
+            <Parameter Name="StudentNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Group_Number" Mode="In" Type="Int32" />
+            <Parameter Name="Full_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addStudentGroup">
+            <Parameter Name="NumberOfGroup" Mode="In" Type="Int32" />
+            <Parameter Name="Speciality" Mode="In" Type="String" />
+            <Parameter Name="YearOf" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addSubject">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="FullNameOfLecturer" Mode="In" Type="String" />
+            <Parameter Name="TitleOfDepartament" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addTaskOnTheSubject">
+            <Parameter Name="NumberOfSubject" Mode="In" Type="Int32" />
+            <Parameter Name="Subject_Title" Mode="In" Type="String" />
+            <Parameter Name="Synopsis" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="delCurriculum">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delRegistration">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delStudent">
+            <Parameter Name="StudentNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delStudentGroup">
+            <Parameter Name="NumberOfGroup" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delSubject">
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="delTaskOnTheSubject">
+            <Parameter Name="NumberOfSubject" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selCurriculum" ReturnType="Collection(UniversityModel.selCurriculum_Result)" />
+          <FunctionImport Name="selGroupNumber" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="selNumberOfSubject" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="selRegistration" ReturnType="Collection(UniversityModel.selRegistration_Result)" />
+          <FunctionImport Name="selStudent" ReturnType="Collection(UniversityModel.selStudent_Result)" />
+          <FunctionImport Name="selStudentGroup" ReturnType="Collection(UniversityModel.selStudentGroup_Result)" />
+          <FunctionImport Name="selStudentNumber" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="selSubject" ReturnType="Collection(UniversityModel.selSubject_Result)" />
+          <FunctionImport Name="selSubjectTitle" ReturnType="Collection(String)" />
+          <FunctionImport Name="selTaskOnTheSubject" ReturnType="Collection(UniversityModel.selTaskOnTheSubject_Result)" />
+          <FunctionImport Name="upCurriculum">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Subject_Title" Mode="In" Type="String" />
+            <Parameter Name="Group_NumberOfGroup" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="upRegistration">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Student_StudentNumber" Mode="In" Type="Int32" />
+            <Parameter Name="TaskOnTheSubject_NumberOfSubject" Mode="In" Type="Int32" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="DateOfissue" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="upStudent">
+            <Parameter Name="StudentNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Group_Number" Mode="In" Type="Int32" />
+            <Parameter Name="Full_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="upStudentGroup">
+            <Parameter Name="NumberOfGroup" Mode="In" Type="Int32" />
+            <Parameter Name="Speciality" Mode="In" Type="String" />
+            <Parameter Name="YearOf" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="upSubject">
+            <Parameter Name="Title" Mode="In" Type="String" />
+            <Parameter Name="FullNameOfLecturer" Mode="In" Type="String" />
+            <Parameter Name="TitleOfDepartament" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="upTaskOnTheSubject">
+            <Parameter Name="NumberOfSubject" Mode="In" Type="Int32" />
+            <Parameter Name="Subject_Title" Mode="In" Type="String" />
+            <Parameter Name="Synopsis" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="Request1_Result">
           <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
@@ -292,6 +466,46 @@
           <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
           <Property Type="Int32" Name="Group_NumberOfGroup" Nullable="false" />
           <Property Type="Int32" Name="NumberOfTasks" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="selCurriculum_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="FullNameOfLecturer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="TitleOfDepartmen" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Speciality" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="YearOf" Nullable="false" />
+          <Property Type="String" Name="Subject_Title" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Group_NumberOfGroup" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selRegistration_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="StudentNumber" Nullable="false" />
+          <Property Type="Int32" Name="Group_NumberOfGroup" Nullable="false" />
+          <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
+          <Property Type="Int32" Name="NumberOfSubject" Nullable="false" />
+          <Property Type="String" Name="Subject_Title" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Synopsis" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="DeliveryDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateOfIssue" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="selStudent_Result">
+          <Property Type="Int32" Name="StudentNumber" Nullable="false" />
+          <Property Type="Int32" Name="Group_NumberOfGroup" Nullable="false" />
+          <Property Type="String" Name="Fulll_Name" Nullable="true" MaxLength="45" />
+        </ComplexType>
+        <ComplexType Name="selStudentGroup_Result">
+          <Property Type="Int32" Name="NumberOfGroup" Nullable="false" />
+          <Property Type="String" Name="Speciality" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="YearOf" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selSubject_Result">
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="FullNameOfLecturer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="TitleOfDepartmen" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="selTaskOnTheSubject_Result">
+          <Property Type="Int32" Name="NumberOfSubject" Nullable="false" />
+          <Property Type="String" Name="Subject_Title" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Synopsis" Nullable="true" MaxLength="1" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -374,6 +588,91 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="addCurriculum" FunctionName="Хранилище UniversityModel.addCurriculum" />
+          <FunctionImportMapping FunctionImportName="addRegistration" FunctionName="Хранилище UniversityModel.addRegistration" />
+          <FunctionImportMapping FunctionImportName="addStudent" FunctionName="Хранилище UniversityModel.addStudent" />
+          <FunctionImportMapping FunctionImportName="addStudentGroup" FunctionName="Хранилище UniversityModel.addStudentGroup" />
+          <FunctionImportMapping FunctionImportName="addSubject" FunctionName="Хранилище UniversityModel.addSubject" />
+          <FunctionImportMapping FunctionImportName="addTaskOnTheSubject" FunctionName="Хранилище UniversityModel.addTaskOnTheSubject" />
+          <FunctionImportMapping FunctionImportName="delCurriculum" FunctionName="Хранилище UniversityModel.delCurriculum" />
+          <FunctionImportMapping FunctionImportName="delRegistration" FunctionName="Хранилище UniversityModel.delRegistration" />
+          <FunctionImportMapping FunctionImportName="delStudent" FunctionName="Хранилище UniversityModel.delStudent" />
+          <FunctionImportMapping FunctionImportName="delStudentGroup" FunctionName="Хранилище UniversityModel.delStudentGroup" />
+          <FunctionImportMapping FunctionImportName="delSubject" FunctionName="Хранилище UniversityModel.delSubject" />
+          <FunctionImportMapping FunctionImportName="delTaskOnTheSubject" FunctionName="Хранилище UniversityModel.delTaskOnTheSubject" />
+          <FunctionImportMapping FunctionImportName="selCurriculum" FunctionName="Хранилище UniversityModel.selCurriculum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selCurriculum_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FullNameOfLecturer" ColumnName="FullNameOfLecturer" />
+                <ScalarProperty Name="TitleOfDepartmen" ColumnName="TitleOfDepartmen" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="YearOf" ColumnName="YearOf" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selGroupNumber" FunctionName="Хранилище UniversityModel.selGroupNumber" />
+          <FunctionImportMapping FunctionImportName="selNumberOfSubject" FunctionName="Хранилище UniversityModel.selNumberOfSubject" />
+          <FunctionImportMapping FunctionImportName="selRegistration" FunctionName="Хранилище UniversityModel.selRegistration">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selRegistration_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+                <ScalarProperty Name="Fulll_Name" ColumnName="Fulll_Name" />
+                <ScalarProperty Name="NumberOfSubject" ColumnName="NumberOfSubject" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="Synopsis" ColumnName="Synopsis" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selStudent" FunctionName="Хранилище UniversityModel.selStudent">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selStudent_Result">
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Group_NumberOfGroup" ColumnName="Group_NumberOfGroup" />
+                <ScalarProperty Name="Fulll_Name" ColumnName="Fulll_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selStudentGroup" FunctionName="Хранилище UniversityModel.selStudentGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selStudentGroup_Result">
+                <ScalarProperty Name="NumberOfGroup" ColumnName="NumberOfGroup" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="YearOf" ColumnName="YearOf" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selStudentNumber" FunctionName="Хранилище UniversityModel.selStudentNumber" />
+          <FunctionImportMapping FunctionImportName="selSubject" FunctionName="Хранилище UniversityModel.selSubject">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selSubject_Result">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FullNameOfLecturer" ColumnName="FullNameOfLecturer" />
+                <ScalarProperty Name="TitleOfDepartmen" ColumnName="TitleOfDepartmen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selSubjectTitle" FunctionName="Хранилище UniversityModel.selSubjectTitle" />
+          <FunctionImportMapping FunctionImportName="selTaskOnTheSubject" FunctionName="Хранилище UniversityModel.selTaskOnTheSubject">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UniversityModel.selTaskOnTheSubject_Result">
+                <ScalarProperty Name="NumberOfSubject" ColumnName="NumberOfSubject" />
+                <ScalarProperty Name="Subject_Title" ColumnName="Subject_Title" />
+                <ScalarProperty Name="Synopsis" ColumnName="Synopsis" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="upCurriculum" FunctionName="Хранилище UniversityModel.upCurriculum" />
+          <FunctionImportMapping FunctionImportName="upRegistration" FunctionName="Хранилище UniversityModel.upRegistration" />
+          <FunctionImportMapping FunctionImportName="upStudent" FunctionName="Хранилище UniversityModel.upStudent" />
+          <FunctionImportMapping FunctionImportName="upStudentGroup" FunctionName="Хранилище UniversityModel.upStudentGroup" />
+          <FunctionImportMapping FunctionImportName="upSubject" FunctionName="Хранилище UniversityModel.upSubject" />
+          <FunctionImportMapping FunctionImportName="upTaskOnTheSubject" FunctionName="Хранилище UniversityModel.upTaskOnTheSubject" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

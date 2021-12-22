@@ -12,6 +12,7 @@ namespace kursovaya2.Controllers
         private UniversityEntities db = new UniversityEntities();
         // GET: Request2
         public ActionResult Index(int pg = 1)
+
         {
             return View();
         }

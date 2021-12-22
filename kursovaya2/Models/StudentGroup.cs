@@ -11,7 +11,8 @@ namespace kursovaya2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class StudentGroup
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +21,23 @@ namespace kursovaya2.Models
             this.Curriculum = new HashSet<Curriculum>();
         }
     
+        [Required]
+        [Display (Name = "Номер группы")]
+        [Range (0, 999999)]
         public int NumberOfGroup { get; set; }
+
+        [Required]
+        [Display(Name = "Специальность")]
         public string Speciality { get; set; }
+
+        [Required]
+        [Display(Name = "Год поступления")]
+        [Range(1950, 2021)]
         public int YearOf { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Curriculum> Curriculum { get; set; }
+
+        public virtual ICollection<Student> Student { get; set; }
     }
 }

@@ -121,9 +121,17 @@ namespace kursovaya2.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             Subject subject = db.Subject.Find(id);
-            db.Subject.Remove(subject);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.Subject.Remove(subject);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Ошибка! Объект используется в другой таблице");
+            }
+            return View(subject);
         }
 
         protected override void Dispose(bool disposing)
